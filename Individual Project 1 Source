@@ -1,0 +1,67 @@
+/*Paycheck Calculator v.1.00
+This program will calculate and output monthly paycheck information, including
+all the amounts deducted.
+Programmed by:  Brian Bui
+Created:  9/17/15
+Last updated:  9/17/15*/
+
+#include<iostream>
+#include<string>
+#include<iomanip>
+using namespace std;
+
+int main()
+{
+	const double fedIncomeTax = .15,  //  15%
+		stateTax = .035,  //  3.5%
+		socialSecurityMedicare = .085,  //  8.5%
+		healthInsurance = 75;  //  $75 dollars flat
+	double grossAmount,  //  gross amount to be inputted by the user
+		year;  //  year to be inputted by the user
+	string month,  //  month to be inputted by the user
+		name,  //  name to be inputted by the user
+		stars = "********************";  //  15 stars to seperate
+	// placeholders to make the code cleaner in the end
+	double afterFedTax,
+		afterStateTax,
+		afterSocialMed,
+		netPay;
+
+	//  prompt user for info
+	cout << stars << stars << stars << endl;
+	cout << "Thank you for using Paycheck Calculator!" << endl;
+	cout << "Please enter your name:  " << endl;
+	getline(cin, name);  //  special command to allow spaces - prompt user for his/her name
+	cout << "Hello, " << name << "!  Please enter the month." << endl;
+	cin >> month;  //  prompt user for the month
+	cout << "Please enter the year." << endl;
+	cin >> year;  //  prompt user for the year
+	cout << "Almost there, " << name << "!  Just need your gross amount of pay." << endl;
+	cin >> grossAmount;  //  prompt user for the gross amount
+	cout << stars << stars << stars << endl;
+
+	// calculations
+	afterFedTax = grossAmount * fedIncomeTax;  //  after federal taxes
+	afterStateTax = grossAmount * stateTax;  //  after state taxes
+	afterSocialMed = grossAmount * socialSecurityMedicare;  //  after social security and medicare
+	netPay = ((((grossAmount - afterFedTax) - afterStateTax) - afterSocialMed) - healthInsurance);  //  net pay
+
+	// display the calculations in a user friendly manner
+	cout << "Paycheck" << endl <<
+		"Month:  " << month << setw(39) << "Year:  " << year << endl <<
+		"Employee Name:  " << name << endl;
+	cout << stars << stars << stars << endl;
+	cout << "Gross Amount:  " << setw(30) << "$" << fixed <<setprecision(2) << grossAmount << endl;  // display gross amount
+	cout << "Federal Tax:  " << setw(31) << "$" << fixed << setprecision(2) << afterFedTax << endl;  // display fed tax
+	cout << "State Tax:  " << setw(33) << "$" << fixed << setprecision(2) << afterStateTax << endl;  // display state tax
+	cout << "Social Sec/Medicare:  " << setw(23) << "$" << fixed << setprecision(2) << afterSocialMed << endl;  // display socialsec/medicare
+	cout << "Health Insurance:  " << setw(26) << "$" << fixed << setprecision(2) << healthInsurance << endl;  //  display health insurance
+	cout << stars << stars << stars << endl;
+	cout << "Net Pay:  " << setw(35) << "$" << fixed << setprecision(2) << netPay << endl;  //  display net pay
+	cout << "Thank you for choosing Paycheck Calculator!  :)" << endl;
+
+
+	system("pause");
+	return 0;
+		
+}
