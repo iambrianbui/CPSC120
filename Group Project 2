@@ -1,0 +1,97 @@
+/*
+Group Project 2
+v1.00
+Created by Brian Bui and Randy Le
+Created on:  9/26/2015
+Last Updated:  9/26/2015
+This program will display a menu and take the order of the user.
+Resturantinater
+McRonalds
+*/
+
+#include<iostream>
+#include<string>
+#include<iomanip>
+using namespace std;
+
+int main()
+{
+	// Initialize menu items
+	const double hamburger = .99,
+		cheeseburger = 1.29,
+		doubleCheeseburger = 1.89,
+		frenchFries = 1.49,
+		chickenSandwich = 1.09,
+		drink = .99,
+		meal = .89,
+		tax = 1.08;
+	//  Initialize menu quantities
+	int numberOfHamburgers = 0,
+		numberOfCheeseburgers = 0,
+		numberOfFrenchFries = 0,
+		numberOfChickenSandwich = 0,
+		numberOfDrinks = 0,
+		howManyMealsHamburgers,
+		howManyMealsCheeseburgers,
+		howManyMealsDouble,
+		makeMeal = 0;
+	//  Final values
+	double finalHamburgers;
+
+	//  Aestheics
+	string stars = "********************",  //  20 stars to seperate
+		lines = "====================";  //  20 equal signs to seperate
+
+	// Display menu
+	cout << stars << stars << endl;
+	cout << "=========Welcome to McRonalds!!=========" << endl;
+	cout << stars << stars << endl;
+	cout << "Hamburger: " << setw(29) << hamburger << endl;  //  Display hamburger price
+	cout << "Cheeseburger: " << setw(26) << cheeseburger << endl;  //  Display cheeseburger price
+	cout << "Double Cheeseburger: " << setw(19) << doubleCheeseburger << endl;  //  Display double cheeseburger price
+	cout << "French Fries: " << setw(26) << frenchFries << endl;  //  Display french fries price
+	cout << "Drink: " << setw(33) << drink << endl;  //  Display drink price
+	cout << lines << lines << endl;
+	cout << "Make it a meal! " << setw(24) << meal << endl;  //  Display meal upgrade
+	cout << stars << stars << endl;
+
+	//  Request user for quantities
+	cout << "How many hamburgers do you want to buy?" << endl;  //  Prompt user for hamburgers
+	cin >> numberOfHamburgers;
+	cout << "Make it a meal? (Press 1 for yes)" << endl;
+	cin >> makeMeal;
+	if (makeMeal == 1)
+	{
+		cout << "How many meals?" << endl;
+		cin >> howManyMealsHamburgers;
+		if (numberOfHamburgers < howManyMealsHamburgers)
+		{
+			cout << "You cannot have more meals than you have hamburgers..." << endl;
+			cout << "How many meals?" << endl;
+			cin >> howManyMealsHamburgers;
+			if (numberOfHamburgers < howManyMealsHamburgers)
+			{
+				cout << "You cannot have more meals than you have hamburgers..." << endl;
+				cout << "How many meals?" << endl;
+				cin >> howManyMealsHamburgers;
+				if (numberOfHamburgers < howManyMealsHamburgers)
+				{
+					cout << "We have the right to refuse service, good-bye." << endl;
+					return 0;
+				}
+				else finalHamburgers = (howManyMealsHamburgers * meal) + (numberOfHamburgers * hamburger);
+				cout << finalHamburgers;
+			}
+			else finalHamburgers = (howManyMealsHamburgers * meal) + (numberOfHamburgers * hamburger);
+			cout << finalHamburgers;
+		}
+		else finalHamburgers = (howManyMealsHamburgers * meal) + (numberOfHamburgers * hamburger);
+		cout << finalHamburgers;
+
+	}
+
+
+
+	// system("pause");
+	return 0;
+}
