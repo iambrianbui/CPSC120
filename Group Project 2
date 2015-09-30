@@ -3,7 +3,7 @@ Group Project 2
 v1.00
 Created by Brian Bui and Randy Le
 Created on:  9/26/2015
-Last Updated:  9/28/2015
+Last Updated:  9/30/2015
 This program will display a menu and take the order of the user.
 Resturantinater
 McRonalds
@@ -76,7 +76,6 @@ int main()
 	//  Request user for quantities
 
 	//  Hamburger phase
-	Hamburger:
 	cout << "How many hamburgers do you want to buy?" << endl;  //  Prompt user for hamburgers
 	cin >> numberOfHamburgers;
 	cout << "Make it a meal?  (Press 1 for yes)" << endl;
