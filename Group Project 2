@@ -17,14 +17,14 @@ using namespace std;
 int main()
 {
 	// Initialize menu items
-	const double hamburger = .99,
-		cheeseburger = 1.29,
-		doubleCheeseburger = 1.89,
-		chickenSandwich = 1.09,
-		frenchFries = 1.49,
-		drink = .99,
-		meal = .89,
-		tax = 1.08;
+	const double hamburger = .99,  //  price of a hamburger
+		cheeseburger = 1.29,  //  price of a cheeseburger
+		doubleCheeseburger = 2.39,  //  price of a double cheeseburger
+		chickenSandwich = 1.29,  //  price of a chicken sandwich
+		frenchFries = 1.49,  //  price of french fries
+		drink = .99,  //  price of a drink
+		meal = 1.69,  //  price to upgrade to a meal
+		tax = 1.08;  //  tax
 
 	//  Initialize menu quantities
 	int numberOfHamburgers = 0,
@@ -33,25 +33,25 @@ int main()
 		numberOfFrenchFries = 0,
 		numberOfChicken = 0,
 		numberOfDrinks = 0,
-		//  Variables to see if user wants to make it a meal
+	//  Variables to see if user wants to make it a meal
 		makeMealHamburgers = 0,
 		makeMealCheeseburgers = 0,
 		makeMealDouble = 0,
 		makeMealChicken = 0,
-		//  If user is a meal, then how many
+	//  If user is a meal, then how many
 		howManyMealsHamburgers,
 		howManyMealsCheeseburgers,
 		howManyMealsDouble,
 		howManyMealsChicken;
 
 	//  Final values
-		double finalHamburgers,
-		finalCheeseburgers,
-		finalDouble,
-		finalFries,
-		finalChicken,
-		finalDrink,
-		finalPrice;
+		double finalHamburgers = 0,
+		finalCheeseburgers = 0,
+		finalDouble = 0,
+		finalFries = 0,
+		finalChicken = 0,
+		finalDrink = 0,
+		finalPrice = 0;
 
 	//  Aesthetics
 		string stars = "********************",  //  20 stars to seperate
@@ -78,16 +78,13 @@ int main()
 	//  Hamburger phase
 	cout << "How many hamburgers do you want to buy?" << endl;  //  Prompt user for hamburgers
 	cin >> numberOfHamburgers;
-	cout << "Make it a meal?  (Press 1 for yes)" << endl;
-	cin >> makeMealHamburgers;
-	finalHamburgers = (numberOfHamburgers * hamburger);
-	if (makeMealHamburgers == 1)
-	{
-		cout << "How many meals?" << endl;
-		cin >> howManyMealsHamburgers;
-		if (numberOfHamburgers < howManyMealsHamburgers)
+	if (numberOfHamburgers > 0)
+	{ 
+		cout << "Make it a meal?  (Press 1 for yes)" << endl;
+		cin >> makeMealHamburgers;
+		finalHamburgers = (numberOfHamburgers * hamburger);
+		if (makeMealHamburgers == 1)
 		{
-			cout << "You cannot have more meals than you have hamburgers..." << endl;
 			cout << "How many meals?" << endl;
 			cin >> howManyMealsHamburgers;
 			if (numberOfHamburgers < howManyMealsHamburgers)
@@ -97,14 +94,20 @@ int main()
 				cin >> howManyMealsHamburgers;
 				if (numberOfHamburgers < howManyMealsHamburgers)
 				{
-					cout << "We have the right to refuse service, good-bye." << endl;
-					return 0;
+					cout << "You cannot have more meals than you have hamburgers..." << endl;
+					cout << "How many meals?" << endl;
+					cin >> howManyMealsHamburgers;
+					if (numberOfHamburgers < howManyMealsHamburgers)
+					{
+						cout << "We have the right to refuse service, good-bye." << endl;
+						return 0;
+					}
+					else finalHamburgers = (howManyMealsHamburgers * meal) + (numberOfHamburgers * hamburger);
 				}
 				else finalHamburgers = (howManyMealsHamburgers * meal) + (numberOfHamburgers * hamburger);
 			}
 			else finalHamburgers = (howManyMealsHamburgers * meal) + (numberOfHamburgers * hamburger);
 		}
-		else finalHamburgers = (howManyMealsHamburgers * meal) + (numberOfHamburgers * hamburger);
 	}
 	cout << string(50, '\n');  //  "Clear screen"
 
@@ -125,16 +128,13 @@ int main()
 	//  Cheeseburger phase
 	cout << "How many cheeseburgers do you want to buy?" << endl;  //  Prompt user for cheeseburgers
 	cin >> numberOfCheeseburgers;
-	cout << "Make it a meal?  (Press 1 for yes)" << endl;
-	cin >> makeMealCheeseburgers;
-	finalCheeseburgers = (numberOfCheeseburgers * cheeseburger);
-	if (makeMealCheeseburgers == 1)
+	if (numberOfCheeseburgers > 0)
 	{
-		cout << "How many meals?" << endl;
-		cin >> howManyMealsCheeseburgers;
-		if (numberOfCheeseburgers < howManyMealsCheeseburgers)
+		cout << "Make it a meal?  (Press 1 for yes)" << endl;
+		cin >> makeMealCheeseburgers;
+		finalCheeseburgers = (numberOfCheeseburgers * cheeseburger);
+		if (makeMealCheeseburgers == 1)
 		{
-			cout << "You cannot have more meals than you have cheeseburgers..." << endl;
 			cout << "How many meals?" << endl;
 			cin >> howManyMealsCheeseburgers;
 			if (numberOfCheeseburgers < howManyMealsCheeseburgers)
@@ -144,14 +144,20 @@ int main()
 				cin >> howManyMealsCheeseburgers;
 				if (numberOfCheeseburgers < howManyMealsCheeseburgers)
 				{
-					cout << "We have the right to refuse service, good-bye." << endl;
-					return 0;
+					cout << "You cannot have more meals than you have cheeseburgers..." << endl;
+					cout << "How many meals?" << endl;
+					cin >> howManyMealsCheeseburgers;
+					if (numberOfCheeseburgers < howManyMealsCheeseburgers)
+					{
+						cout << "We have the right to refuse service, good-bye." << endl;
+						return 0;
+					}
+					else finalCheeseburgers = (howManyMealsCheeseburgers * meal) + (numberOfCheeseburgers * cheeseburger);
 				}
 				else finalCheeseburgers = (howManyMealsCheeseburgers * meal) + (numberOfCheeseburgers * cheeseburger);
 			}
 			else finalCheeseburgers = (howManyMealsCheeseburgers * meal) + (numberOfCheeseburgers * cheeseburger);
 		}
-		else finalCheeseburgers = (howManyMealsCheeseburgers * meal) + (numberOfCheeseburgers * cheeseburger);
 	}
 	cout << string(50, '\n');  //  "Clear screen"
 
@@ -172,17 +178,14 @@ int main()
 	//  Double cheeseburger phase
 	cout << "How many double cheeseburgers do you want to buy?" << endl;  //  Prompt user for double cheeseburgers
 	cin >> numberOfDouble;
-	cout << "Make it a meal?  (Press 1 for yes)" << endl;
-	cin >> makeMealDouble;
-	finalDouble = (numberOfDouble * doubleCheeseburger);
-	if (makeMealDouble == 1)
+	if (numberOfDouble > 0)
 	{
-		cout << "How many meals?" << endl;
-		cin >> howManyMealsDouble;
-		if (numberOfDouble < howManyMealsDouble)
+		cout << "Make it a meal?  (Press 1 for yes)" << endl;
+		cin >> makeMealDouble;
+		finalDouble = (numberOfDouble * doubleCheeseburger);
+		if (makeMealDouble == 1)
 		{
-			cout << "You cannot have more meals than you have double cheeseburgers..." << endl;
-			cout << "How many meals?";
+			cout << "How many meals?" << endl;
 			cin >> howManyMealsDouble;
 			if (numberOfDouble < howManyMealsDouble)
 			{
@@ -191,14 +194,20 @@ int main()
 				cin >> howManyMealsDouble;
 				if (numberOfDouble < howManyMealsDouble)
 				{
-					cout << "We have the right to refuse service, good-bye." << endl;
-					return 0;
+					cout << "You cannot have more meals than you have double cheeseburgers..." << endl;
+					cout << "How many meals?";
+					cin >> howManyMealsDouble;
+					if (numberOfDouble < howManyMealsDouble)
+					{
+						cout << "We have the right to refuse service, good-bye." << endl;
+						return 0;
+					}
+					else finalDouble = (howManyMealsDouble * meal) + (numberOfDouble * doubleCheeseburger);
 				}
 				else finalDouble = (howManyMealsDouble * meal) + (numberOfDouble * doubleCheeseburger);
 			}
 			else finalDouble = (howManyMealsDouble * meal) + (numberOfDouble * doubleCheeseburger);
 		}
-		else finalDouble = (howManyMealsDouble * meal) + (numberOfDouble * doubleCheeseburger);
 	}
 	cout << string(50, '\n');  //  "Clear screen"
 
@@ -219,33 +228,36 @@ int main()
 	//  Chicken sandwich phase
 	cout << "How many chicken sandwiches do you want to buy?" << endl;  //  Prompt user for chicken sandwiches
 	cin >> numberOfChicken;
-	cout << "Make it a meal?  (Press 1 for yes)" << endl;
-	cin >> makeMealChicken;
-	finalChicken = (numberOfChicken * chickenSandwich);
-	if (makeMealChicken == 1)
+	if (numberOfChicken > 0)
 	{
-		cout << "How many meals?" << endl;
-		cin >> howManyMealsChicken;
-		if (numberOfChicken < howManyMealsChicken)
+		cout << "Make it a meal?  (Press 1 for yes)" << endl;
+		cin >> makeMealChicken;
+		finalChicken = (numberOfChicken * chickenSandwich);
+		if (makeMealChicken == 1)
 		{
-			cout << "You cannot have more meals than you have chicken sandwiches..." << endl;
-			cout << "How many meals?";
+			cout << "How many meals?" << endl;
 			cin >> howManyMealsChicken;
 			if (numberOfChicken < howManyMealsChicken)
 			{
-				cout << "You cannot have more meals than you have double cheeseburgers..." << endl;
+				cout << "You cannot have more meals than you have chicken sandwiches..." << endl;
 				cout << "How many meals?";
 				cin >> howManyMealsChicken;
 				if (numberOfChicken < howManyMealsChicken)
 				{
-					cout << "We have the right to refuse service, good-bye." << endl;
-					return 0;
+					cout << "You cannot have more meals than you have double cheeseburgers..." << endl;
+					cout << "How many meals?";
+					cin >> howManyMealsChicken;
+					if (numberOfChicken < howManyMealsChicken)
+					{
+						cout << "We have the right to refuse service, good-bye." << endl;
+						return 0;
+					}
+					else finalChicken = (howManyMealsChicken * meal) + (numberOfChicken * chickenSandwich);
 				}
 				else finalChicken = (howManyMealsChicken * meal) + (numberOfChicken * chickenSandwich);
 			}
 			else finalChicken = (howManyMealsChicken * meal) + (numberOfChicken * chickenSandwich);
 		}
-		else finalChicken = (howManyMealsChicken * meal) + (numberOfChicken * chickenSandwich);
 	}
 	cout << string(50, '\n');  //  "Clear screen"
 
