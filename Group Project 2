@@ -56,7 +56,7 @@ int main()
 	//  Aesthetics
 		string stars = "********************",  //  20 stars to seperate
 			lines = "====================",  //  20 equal signs to seperate
-			comment	;
+			comment = "N/A";
 	
 
 	// Display menu
@@ -76,6 +76,7 @@ int main()
 	//  Request user for quantities
 
 	//  Hamburger phase
+	Hamburger:
 	cout << "How many hamburgers do you want to buy?" << endl;  //  Prompt user for hamburgers
 	cin >> numberOfHamburgers;
 	cout << "Make it a meal?  (Press 1 for yes)" << endl;
@@ -275,8 +276,8 @@ int main()
 
 	//  Askuser for comments
 	cout << "Any comments/requests to your order?" << endl;
+	cin.ignore(1000, '\n');
 	getline(cin, comment);  //  allows spaces
-
 	cout << string(50, '\n');  //  "Clear screen"
 
 	//  Calculation
