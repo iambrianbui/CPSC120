@@ -33,19 +33,19 @@ int main()
 		numberOfFrenchFries = 0,
 		numberOfChicken = 0,
 		numberOfDrinks = 0,
-	//  Variables to see if user wants to make it a meal
+		//  Variables to see if user wants to make it a meal
 		makeMealHamburgers = 0,
 		makeMealCheeseburgers = 0,
 		makeMealDouble = 0,
 		makeMealChicken = 0,
-	//  If user is a meal, then how many
+		//  If user is a meal, then how many
 		howManyMealsHamburgers,
 		howManyMealsCheeseburgers,
 		howManyMealsDouble,
 		howManyMealsChicken;
 
 	//  Final values
-		double finalHamburgers = 0,
+	double finalHamburgers = 0,
 		finalCheeseburgers = 0,
 		finalDouble = 0,
 		finalFries = 0,
@@ -54,10 +54,10 @@ int main()
 		finalPrice = 0;
 
 	//  Aesthetics
-		string stars = "********************",  //  20 stars to seperate
-			lines = "====================",  //  20 equal signs to seperate
-			comment = "N/A";
-	
+	string stars = "********************",  //  20 stars to seperate
+		lines = "====================",  //  20 equal signs to seperate
+		comment = "N/A";
+
 
 	// Display menu
 	cout << stars << stars << endl;
@@ -79,7 +79,7 @@ int main()
 	cout << "How many hamburgers do you want to buy?" << endl;  //  Prompt user for hamburgers
 	cin >> numberOfHamburgers;
 	if (numberOfHamburgers > 0)
-	{ 
+	{
 		cout << "Make it a meal?  (Press 1 for yes)" << endl;
 		cin >> makeMealHamburgers;
 		finalHamburgers = (numberOfHamburgers * hamburger);
@@ -278,12 +278,20 @@ int main()
 	//  Prompt user for fries
 	cout << "Additional orders of fries?" << endl;
 	cin >> numberOfFrenchFries;
-	finalFries = (numberOfFrenchFries * frenchFries);
+	if (numberOfFrenchFries > 0)
+	{
+		finalFries = (numberOfFrenchFries * frenchFries);
+	}
+	else finalFries = 0;
 
 	//  Prompt user for drinks
 	cout << "Additional orders of drinks?" << endl;
 	cin >> numberOfDrinks;
-	finalDrink = (numberOfFrenchFries * drink);
+	if (numberOfDrinks > 0)
+	{
+		finalDrink = (numberOfFrenchFries * drink);
+	}
+	else finalDrink = 0;
 
 	//  Askuser for comments
 	cout << "Any comments/requests to your order?" << endl;
@@ -303,11 +311,11 @@ int main()
 	cout << numberOfDouble << " Double Cheeseburgers" << setw(18) << finalDouble << endl;
 	cout << numberOfChicken << " Chicken Sandwiches" << setw(20) << finalChicken << endl;
 	cout << numberOfFrenchFries << " French Fries" << setw(26) << finalFries << endl;
-	cout << numberOfDrinks << " Drinks" << setw(32)  << finalDrink << endl;
+	cout << numberOfDrinks << " Drinks" << setw(32) << finalDrink << endl;
 	cout << stars << stars << endl;
 	cout << "Request: " << comment << endl;
 	cout << stars << stars << endl;
-	cout << "Total: " << setw(33) << fixed <<setprecision(2) << finalPrice << endl;
+	cout << "Total: " << setw(33) << fixed << setprecision(2) << finalPrice << endl;
 	cout << lines << lines << endl;
 	cout << "Have a nice day!" << endl;
 	cout << stars << stars << endl;
