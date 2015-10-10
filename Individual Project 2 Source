@@ -1,0 +1,76 @@
+/*Individual Project 2
+This program will calculate the time it takes a soundwave to move through a medium.
+Created by:  Brian Bui
+Due:  10/10/2015*/
+#include<iostream>
+#include<iomanip>
+using namespace std;
+int main()
+{
+	//  Initialize variables
+	enum mediumValue { air = 1100, water = 4900, steel = 16400 };
+	int medium;
+	double distance,
+		final;
+
+	//  Prompt user for a medium
+	cout << "Select a medium: " << endl;
+	cout << "1.  Air" << endl;
+	cout << "2.  Water" << endl;
+	cout << "3.  Steel" << endl;
+
+	cin >> medium;
+	//case
+	switch (medium)
+	{
+		//Air
+	case 1:
+		cout << "Enter the distance." << endl;  //Prompt user for distance
+		cin >> distance;
+		if (distance >= 0)
+		{
+			final = distance / air;  //  Calculation for seconds to travel
+			cout << "A sound wave takes " << fixed << setprecision(4) << final << " seconds to travel " << distance << " feet in air." << endl;
+		}
+		else
+		{
+			cout << "Distance must be greater than zero." << endl;
+		}
+		break;
+
+		//Water
+	case 2:
+		cout << "Enter the distance." << endl;  //Prompt user for distance
+		cin >> distance;
+		if (distance >= 0)
+		{
+			final = distance / water;  //  Calculation for seconds to travel
+			cout << "A sound wave takes " << fixed << setprecision(4) << final << " seconds to travel " << distance << " feet in water." << endl;
+		}
+		else
+		{
+			cout << "Distance must be greater than zero." << endl;
+		}
+		break;
+
+		//Steel
+	case 3:
+		cout << "Enter the distance." << endl;  //Prompt user for distance
+		cin >> distance;
+		if (distance >= 0)
+		{
+			final = distance / steel;  //  Calculation for seconds to travel
+			cout << "A sound wave takes " << fixed << setprecision(4) << final << " seconds to travel " << distance << " feet in steel." << endl;
+		}
+		else
+		{
+			cout << "Distance must be greater than zero." << endl;
+		}
+		break;
+
+		//Default
+	default:  cout << "The valid choices are 1 through 3." << endl;
+	}
+	system("pause");
+	return 0;
+}
