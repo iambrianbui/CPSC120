@@ -1,0 +1,129 @@
+/*Brian Bui
+CWID:  890670979
+Individual Project 3
+Due:  15 November 2015
+=========================================================================================
+Pseudocode
+Create a menu
+1:  Search score
+	Use a for loop the search for the exact match, if not then say "The score you entered
+	is not found."
+2:  Generate stats file
+	Use a for loop to find the highest and lowest scores, and generate stats.txt.
+3:  Display all scores
+4:  Exit the program.
+*/
+
+#include<iostream>
+#include<fstream>
+#include<string>
+using namespace std;
+
+int main()
+{
+	int choice = 0;  //  See the choice for the menu
+
+	//Option 1
+	int score; 
+	bool found = false;
+
+	//Option 2 and 3
+	ofstream createFile;
+	ifstream dataFile;
+	string data, 
+		stats = "stats.txt";
+
+	//General array stuff
+	const int scoreSize = 10;
+	int	testScores[scoreSize];
+do
+	{
+		//  Display "user friendly" menu.
+		cout << endl << "Hello!  What would you like to do?" << endl
+			<< "1.....Search Score" << endl
+			<< "2..... Generate Stats File" << endl
+			<< "3..... Print Scores" << endl
+			<< "4..... Quit" << endl;
+		cin >> choice;
+		if (choice == 1)
+		{
+			cout << "Please insert score:" << endl;
+			cin >> score;  //prompt user for score
+
+			//  open the file, load the array
+			dataFile.open("exam.txt");
+			while (!dataFile.eof())
+			{
+				for (int i = 0; i < scoreSize; i++)
+				{
+					dataFile >> testScores[i];
+				}
+			}
+			dataFile.close();
+
+			//  loop
+				for (int i = 0; i < scoreSize; i++) 
+				{
+					if (testScores[i] == score)
+					{
+						found = true;
+						cout << "Matching score found." << endl;
+						break;
+					}
+					if (testScores[i] != score)
+						found = false;
+				}
+				if (found == false)
+					cout << "The score you entered is not found." << endl;
+		}
+		if (choice == 2)
+		{
+			int  
+				highestNum,
+				lowestNum;
+
+			dataFile.open("exam.txt");
+			while (!dataFile.eof())
+			{
+				for (int i = 0; i < scoreSize; i++)
+				{
+					dataFile >> testScores[i];
+				}
+			}
+			dataFile.close();
+
+			// Find highest and lowest amounts
+			highestNum = lowestNum = testScores[0];
+			for (int i = 0; i < scoreSize; i++)
+			{
+				if (testScores[i] > highestNum)
+					highestNum = testScores[i];
+				else if (testScores[i] < lowestNum)
+					lowestNum = testScores[i];
+			}
+			createFile.open(stats.c_str());
+			createFile << highestNum;
+			createFile << lowestNum;
+			cout << "The stats.txt file has been generated.  " << endl
+				<< "The highest score is '" << highestNum << "' and the lowest score is '" << lowestNum << "'." << endl;
+			createFile.close();
+		}
+		if (choice == 3)
+		{
+			cout << "Generating stats file..." << endl;
+			dataFile.open("exam.txt");
+			while (!dataFile.eof())
+			{
+				dataFile >> data;
+				cout << data << endl;
+			}
+			dataFile.close();
+		}
+		
+	}
+while (choice != 4);
+	cout << "Exiting the program..." << endl;
+
+		system("pause");
+		return 0;
+}
